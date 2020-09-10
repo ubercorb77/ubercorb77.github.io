@@ -1,6 +1,10 @@
 # Welcome to my github pages thing
 
-Hello! I am very new to github. This isn't such a serious website, it's just a collection of my coding projects and it helps me access my javascript projects on my phone.
+Hello! I am very new to github so this site visually won't be the best. This isn't such a serious website, it's just a collection of my personal projects.
+
+## YouTube channel
+- [ubercorb77](https://youtube.com/c/ubercorb77panda)
+  - I upload fun and serious bowling videos here. Usually the serious videos are me explaining my opinions using some analysis.
 
 ## Javascript
 - [Bowling Scores Calc](bowlingScoreCalc.html) (calculate total, games, avg, +/- 200)
