@@ -6,5 +6,5 @@ Hello! I am very new to github. I am using github pages as a replacement for goo
 [Bowling Scores Calc](bowlingScoreCalc.html)
 
 ## Google Sheets
-#### Data only
+### Data only
 [Dual Angle / Pin Buffer conversion](https://docs.google.com/spreadsheets/d/1Ps0zo3vpZN99l0kZYcBa-ZYu2aUZIzsjTYAIoCsKqUY/edit?usp=sharing)
