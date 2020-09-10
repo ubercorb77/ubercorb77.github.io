@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Bowling Score Calc</h1>
+
+<p>Input scores with commas inbetween. "200,210,205"</p>
+<button onclick="clearr();">Clear</button>
+
+<table>
+  <tr>
+    <th>Round</th>
+    <th>Scores</th>
+    <th>Total</th>
+    <th>Games</th>
+    <th>Average</th>
+    <th>+/- 200</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td><input id="scores1" autocomplete="off" oninput="calc(1)"></td>
+    <td id="total1">na</td>
+    <td id="games1">na</td>
+    <td id="avg1">na</td>
+    <td id="plusminus1">na</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td><input id="scores2" autocomplete="off" oninput="calc(2)"></td>
+    <td id="total2">na</td>
+    <td id="games2">na</td>
+    <td id="avg2">na</td>
+    <td id="plusminus2">na</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td><input id="scores3" autocomplete="off" oninput="calc(3)"></td>
+    <td id="total3">na</td>
+    <td id="games3">na</td>
+    <td id="avg3">na</td>
+    <td id="plusminus3">na</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td><input id="scores4" autocomplete="off" oninput="calc(4)"></td>
+    <td id="total4">na</td>
+    <td id="games4">na</td>
+    <td id="avg4">na</td>
+    <td id="plusminus4">na</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td><input id="scores5" autocomplete="off" oninput="calc(5)"></td>
+    <td id="total5">na</td>
+    <td id="games5">na</td>
+    <td id="avg5">na</td>
+    <td id="plusminus5">na</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td id="bigTotal">na</td>
+    <td id="bigGames">na</td>
+    <td id="bigAvg">na</td>
+    <td id="bigPlusMinus">na</td>
+  </tr>
+</table>
+
+<style>
+h1 {
+	font-weight: bold;
+	font-family: Consolas;
+}
+th {
+	font-weight: bold;
+	font-size: large;
+}
+th,td {
+	text-align: center;
+	padding: 5px;
+	font-family: Consolas;
+}
+p {
+	font-family: Consolas;
+}
+</style>
+
+<script>
+function parseIntt(x) {
+	if (!isNaN(x)) {
+    	return parseInt(x);
+    } else {
+    	return 0;
+    }
+}
+
+var rounds = 5;
+function clearr() {
+	for (var i = 1; i < rounds+1; i++) {
+		document.getElementById("scores"+i).value = "";
+		calc(i);
+    }
+}
+
+function calc(roundNum) {
+	if (document.getElementById("scores"+roundNum).value === "") {
+		document.getElementById("total"+roundNum).innerHTML = "na";
+		document.getElementById("games"+roundNum).innerHTML = "na";
+		document.getElementById("avg"+roundNum).innerHTML = "na";
+		document.getElementById("plusminus"+roundNum).innerHTML = "na";
+    } else {
+		var scoresArray = document.getElementById("scores"+roundNum).value.split(",");
+		var games = scoresArray.length;
+		var total = 0;
+		for (var i = 0; i < games; i++) {
+			total += parseInt(scoresArray[i]);
+		}
+		var average = total/games;
+		average = Math.round((average + Number.EPSILON) * 100) / 100
+		var plusminus = total - games*200;
+
+		document.getElementById("total"+roundNum).innerHTML = total;
+		document.getElementById("games"+roundNum).innerHTML = games;
+		document.getElementById("avg"+roundNum).innerHTML = average;
+		document.getElementById("plusminus"+roundNum).innerHTML = plusminus;
+    }
+    
+	var allInputsBlank = true;
+	for (var i = 1; i < rounds+1; i++) {
+		if (document.getElementById("scores"+i).value !== "") {
+			allInputsBlank = false;
+			break;
+		}
+	}
+    
+    if (allInputsBlank) {
+		document.getElementById("bigTotal").innerHTML = "na";
+		document.getElementById("bigGames").innerHTML = "na";
+		document.getElementById("bigAvg").innerHTML = "na";
+		document.getElementById("bigPlusMinus").innerHTML = "na";
+	} else {
+		var bigTotal = 0;
+		var bigGames = 0;
+		for (var i = 1; i < rounds+1; i++) {
+			bigTotal += parseIntt(document.getElementById("total"+i).innerHTML);
+			bigGames += parseIntt(document.getElementById("games"+i).innerHTML);
+		}
+		var bigAverage = bigTotal/bigGames;
+		bigAverage = Math.round((bigAverage + Number.EPSILON) * 100) / 100
+		var bigPlusMinus = bigTotal - bigGames*200;
+		
+		document.getElementById("bigTotal").innerHTML = bigTotal;
+		document.getElementById("bigGames").innerHTML = bigGames;
+		document.getElementById("bigAvg").innerHTML = bigAverage;
+		document.getElementById("bigPlusMinus").innerHTML = bigPlusMinus;
+	}
+}
+</script>
+
+</body>
+</html>
