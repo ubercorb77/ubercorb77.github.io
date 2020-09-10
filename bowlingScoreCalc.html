@@ -5,6 +5,7 @@
 <h1>Bowling Score Calc</h1>
 
 <p>Input scores with commas inbetween. "200,210,205"</p>
+<p id="cacheStatus">Cache Status</p>
 <button onclick="clearr();">Clear</button>
 
 <table>
@@ -18,7 +19,7 @@
   </tr>
   <tr>
     <td>1</td>
-    <td><input id="scores1" autocomplete="off" oninput="calc(1)"></td>
+    <td><input id="scores1" class="scores" autocomplete="off" oninput="calc(1)"></td>
     <td id="total1">na</td>
     <td id="games1">na</td>
     <td id="avg1">na</td>
@@ -26,7 +27,7 @@
   </tr>
   <tr>
     <td>2</td>
-    <td><input id="scores2" autocomplete="off" oninput="calc(2)"></td>
+    <td><input id="scores2" class="scores" autocomplete="off" oninput="calc(2)"></td>
     <td id="total2">na</td>
     <td id="games2">na</td>
     <td id="avg2">na</td>
@@ -34,7 +35,7 @@
   </tr>
   <tr>
     <td>3</td>
-    <td><input id="scores3" autocomplete="off" oninput="calc(3)"></td>
+    <td><input id="scores3" class="scores" autocomplete="off" oninput="calc(3)"></td>
     <td id="total3">na</td>
     <td id="games3">na</td>
     <td id="avg3">na</td>
@@ -42,7 +43,7 @@
   </tr>
   <tr>
     <td>4</td>
-    <td><input id="scores4" autocomplete="off" oninput="calc(4)"></td>
+    <td><input id="scores4" class="scores" autocomplete="off" oninput="calc(4)"></td>
     <td id="total4">na</td>
     <td id="games4">na</td>
     <td id="avg4">na</td>
@@ -50,7 +51,7 @@
   </tr>
   <tr>
     <td>5</td>
-    <td><input id="scores5" autocomplete="off" oninput="calc(5)"></td>
+    <td><input id="scores5" class="scores" autocomplete="off" oninput="calc(5)"></td>
     <td id="total5">na</td>
     <td id="games5">na</td>
     <td id="avg5">na</td>
@@ -83,9 +84,26 @@ th,td {
 p {
 	font-family: Consolas;
 }
+.scores {
+	width: 300px;
+}
 </style>
 
 <script>
+var rounds = 5;
+
+if (typeof(Storage) === "undefined") {
+	document.getElementById("cacheStatus").innerHTML = "Sorry, your browser does not support Web Storage.";
+} else {
+	for (var i =  1; i < rounds + 1; i++) {
+		document.getElementById("scores"+i).value = localStorage.getItem("scores"+i);
+		if (document.getElementById("scores"+i).value !== "") {
+			calc(i);
+		}
+	}
+	document.getElementById("cacheStatus").innerHTML = "Cached scores loaded.";
+}
+
 function parseIntt(x) {
 	if (!isNaN(x)) {
     	return parseInt(x);
@@ -94,7 +112,6 @@ function parseIntt(x) {
     }
 }
 
-var rounds = 5;
 function clearr() {
 	for (var i = 1; i < rounds+1; i++) {
 		document.getElementById("scores"+i).value = "";
@@ -103,13 +120,19 @@ function clearr() {
 }
 
 function calc(roundNum) {
-	if (document.getElementById("scores"+roundNum).value === "") {
+	var userInput = document.getElementById("scores"+roundNum).value;
+	
+	if (typeof(Storage) !== "undefined") {
+		localStorage.setItem("scores"+roundNum, userInput);
+	}
+
+	if (userInput === "") {
 		document.getElementById("total"+roundNum).innerHTML = "na";
 		document.getElementById("games"+roundNum).innerHTML = "na";
 		document.getElementById("avg"+roundNum).innerHTML = "na";
 		document.getElementById("plusminus"+roundNum).innerHTML = "na";
     } else {
-		var scoresArray = document.getElementById("scores"+roundNum).value.split(",");
+		var scoresArray = userInput.split(",");
 		var games = scoresArray.length;
 		var total = 0;
 		for (var i = 0; i < games; i++) {
