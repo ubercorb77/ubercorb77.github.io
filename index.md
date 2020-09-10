@@ -25,5 +25,5 @@ Hello! I am very new to github so this site visually won't be the best. This isn
 
 ## TI-Basic
 These are text files of the code. These are my versions of the game, and there are probably more efficient ways to code these.
-- [Flappy Bird](flappyBird ti basic.txt)
-- [Snake](snake ti basic.txt)
+- [Flappy Bird](flappyBird ti basic.md)
+- [Snake](snake ti basic.md)
