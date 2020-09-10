@@ -1,4 +1,6 @@
-This was my first calculator game that used collisions. 68 lines
+This was my first calculator game that used collisions.
+
+68 lines
 
 ```
 ClrHome
