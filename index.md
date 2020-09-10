@@ -20,4 +20,7 @@ Hello! I am very new to github. This isn't such a serious website, it's just a c
   - 2nd sheet is data only
 
 ## TI-Basic
-- 
+(text files of code)
+These are my versions of the game. There are probably more efficient ways to code these.
+- [Flappy Bird](flappyBird ti basic.txt)
+- [Snake](snake ti basic.txt)
