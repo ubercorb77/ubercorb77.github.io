@@ -16,12 +16,12 @@ Hello! I am very new to github so this site visually won't be the best. This isn
 - Swing + Slide dynamics (a physics analysis of how timing affects ball speed)
   - This spreadsheet uses Euler's method (breaks up the problem into many little, simpler steps to get a good estimation)
   - But I am working on a new version that will use calculus (solve the whole problem, without estimating)
-- Spare Targets (where you should target for different pins if you throw 100% straight)
-  - 1st sheet is a calculator
+- [Spare Targets](https://docs.google.com/spreadsheets/d/1sZUKxdddEp4zYlZGXfuI75RjdbisBEGYA3skklf41mw/edit?usp=sharing) (where you should target for different pins if you throw 100% straight)
+  - Sheets 1-2 are calculators, 3rd sheet is data/results from 2nd sheet calculator
 
 ### Data only (view only, not a calculator)
 - [Spare Targets](https://docs.google.com/spreadsheets/d/1sZUKxdddEp4zYlZGXfuI75RjdbisBEGYA3skklf41mw/edit?usp=sharing) (where you should target for different pins if you throw 100% straight)
-  - 2nd sheet is data only
+  - Sheets 1-2 are calculators, 3rd sheet is data/results from 2nd sheet calculator
 
 ## TI-Basic
 These are text files of the code. These are my versions of the game, and there are probably more efficient ways to code these.
