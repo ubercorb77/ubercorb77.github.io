@@ -12,7 +12,7 @@ Hello! I am very new to github so this site visually won't be the best. This isn
 ## Google Sheets
 ### Calculators
 - [Dual Angle / Pin Buffer conversion](https://docs.google.com/spreadsheets/d/1Ps0zo3vpZN99l0kZYcBa-ZYu2aUZIzsjTYAIoCsKqUY/edit?usp=sharing) (
-- Analysis of Ball Weight vs Carry (inspiration and equations from Bowling Beyond the Basics)
+- [Analysis of Ball Weight vs Carry](https://docs.google.com/spreadsheets/d/16qTBZFGV6j69rFYmjWMh0AdQJvjtEfsbdGXGdWY-iVo/edit?usp=sharing) (inspiration and equations from Bowling Beyond the Basics)
 - Swing + Slide dynamics (a physics analysis of how timing affects ball speed)
   - I think this spreadsheet has some problems with the body speed becoming negative but I'm going to make a new one anyway and the new one shouldn't have that problem and the new one will be more accurate
   - This spreadsheet uses Euler's method (breaks up the problem into many little, simpler steps to get a good estimation)
