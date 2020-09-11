@@ -20,7 +20,7 @@ Hello! I am very new to github so this site visually won't be the best. This isn
   - 1st sheet is a calculator
 
 ### Data only (view only, not a calculator)
-- Spare Targets (where you should target for different pins if you throw 100% straight)
+- [Spare Targets](https://docs.google.com/spreadsheets/d/1sZUKxdddEp4zYlZGXfuI75RjdbisBEGYA3skklf41mw/edit?usp=sharing) (where you should target for different pins if you throw 100% straight)
   - 2nd sheet is data only
 
 ## TI-Basic
