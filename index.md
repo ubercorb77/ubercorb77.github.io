@@ -2,6 +2,8 @@
 
 Hello! I am very new to github so this site visually won't be the best. This isn't such a serious website, it's just a collection of my personal projects.
 
+I'll be updating this. If an item is listed here but there's no link, that probably means I'll be uploading the file soon.
+
 ## YouTube channel
 - [ubercorb77](https://youtube.com/c/ubercorb77panda/videos)
   - I upload fun and serious bowling videos here. Usually the serious videos are me explaining my opinions using some analysis.
@@ -23,6 +25,16 @@ Hello! I am very new to github so this site visually won't be the best. This isn
 ### Data only (view only, not a calculator)
 - [Spare Targets](https://docs.google.com/spreadsheets/d/1sZUKxdddEp4zYlZGXfuI75RjdbisBEGYA3skklf41mw/edit?usp=sharing) (where you should target for different pins if you throw 100% straight)
   - Sheets 1-2 are calculators, 3rd sheet is data/results from 2nd sheet calculator
+
+## 3D printing
+- Bowling Mini Pro-Sect
+  - measures 3.5 inches on each side, total of 7 inches
+  - 0.25 inches width
+  - 0.5 inches width: with middle line, with modified middle line
+- Phone Stand (insert measurements)
+  - custom designed for the measurements of an iPhone XS with a Spigen Liquid Air case
+- Phone Stand 2
+  - adjustable but not as secure
 
 ## TI-Basic
 These are text files of the code. These are my versions of the game, and there are probably more efficient ways to code these.
