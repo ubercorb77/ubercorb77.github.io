@@ -32,9 +32,11 @@ I'll be updating this. If an item is listed here but there's no link, that proba
   - 0.25 inches width
   - 0.5 inches width: with middle line, with modified middle line
 - Phone Stand (insert measurements)
-  - custom designed for the measurements of an iPhone XS with a Spigen Liquid Air case
+  - custom designed for the measurements of an iPhone XS with a Spigen Liquid Air case.
+  - 13mm depth and 70-110.5mm width
 - Phone Stand 2
   - adjustable but not as secure
+  - 0-34mm depth
 
 ## TI-Basic
 These are text files of the code. These are my versions of the game, and there are probably more efficient ways to code these.
