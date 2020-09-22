@@ -29,16 +29,16 @@ I'll be updating this. If an item is listed here but there's no link, that proba
 ## 3D printing
 - Bowling Mini Pro-Sect
   - measures 3.5 inches on each side, total of 7 inches
-  - 0.25 inches width
-  - 0.5 inches width: with middle line, with modified middle line
-- Phone Stand (insert measurements)
+  - 0.25 inches wall width (github downloads): with middle line, with modified middle line
+  - 0.5 inches wall width (github downloads): with middle line, with modified middle line
+- Phone Stand
   - picture
-  - custom designed for the measurements of an iPhone XS with a Spigen Liquid Air case.
-  - 13mm depth and 70-110.5mm width
-- [Phone Stand 2](Print v1.3mf)
+  - Custom-designed for the measurements of an iPhone XS with a Spigen Liquid Air case.
+  - 13mm phone depth and 70-110.5mm phone width
+- [Phone Stand 2 (github download)](https://github.com/ubercorb77/ubercorb77.github.io/blob/master/PRINT%20v1.3mf)
   - picture
-  - adjustable but not as secure
-  - 0-34mm depth
+  - Adjustable/one-size-fits-all, but not as secure as a custom-designed one.
+  - Supports 0-34mm phone depth. Wall size is 70x70mm.
 
 ## TI-Basic
 These are text files of the code. These are my versions of the game, and there are probably more efficient ways to code these.
