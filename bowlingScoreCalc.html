@@ -91,10 +91,10 @@ p {
 
 <script>
 var rounds = 5;
+var NAvalue = "na";
 
-if (typeof(Storage) === "undefined") {
-	document.getElementById("cacheStatus").innerHTML = "Sorry, your browser does not support Web Storage.";
-} else {
+//CACHE LOADING
+if (typeof(Storage) !== "undefined") {
 	for (var i =  1; i < rounds + 1; i++) {
 		document.getElementById("scores"+i).value = localStorage.getItem("scores"+i);
 		if (document.getElementById("scores"+i).value !== "") {
@@ -104,6 +104,8 @@ if (typeof(Storage) === "undefined") {
 	document.getElementById("cacheStatus").innerHTML = "Cached scores loaded.";
 }
 
+
+//PARSEINT ELIMINATE THE NaN RETURNS
 function parseIntt(x) {
 	if (!isNaN(x)) {
     	return parseInt(x);
@@ -112,6 +114,16 @@ function parseIntt(x) {
     }
 }
 
+//INNERHTML ELIMINATE NaN AND REPLACE WITH na
+function innerHTMLchange(id, text) {
+	if (isNaN(text)) {
+		document.getElementById(id).innerHTML = NAvalue;
+	} else {
+		document.getElementById(id).innerHTML = text;
+	}
+}
+
+//CLEAR ALL TEXTBOXES
 function clearr() {
 	for (var i = 1; i < rounds+1; i++) {
 		document.getElementById("scores"+i).value = "";
@@ -119,35 +131,41 @@ function clearr() {
     }
 }
 
+//FUNCTION CALLED ON INPUT UPDATE
 function calc(roundNum) {
 	var userInput = document.getElementById("scores"+roundNum).value;
 	
+	//STORE CACHE
 	if (typeof(Storage) !== "undefined") {
 		localStorage.setItem("scores"+roundNum, userInput);
 	}
-
-	if (userInput === "") {
-		document.getElementById("total"+roundNum).innerHTML = "na";
-		document.getElementById("games"+roundNum).innerHTML = "na";
-		document.getElementById("avg"+roundNum).innerHTML = "na";
-		document.getElementById("plusminus"+roundNum).innerHTML = "na";
-    } else {
+	
+	if (userInput === "") { //RESET TO na WHEN BLANK
+		innerHTMLchange("total"+roundNum, NAvalue);
+		innerHTMLchange("games"+roundNum, NAvalue);
+		innerHTMLchange("avg"+roundNum, NAvalue);
+		innerHTMLchange("plusminus"+roundNum, NAvalue);
+    } else { //CALCULATE STATS
 		var scoresArray = userInput.split(",");
-		var games = scoresArray.length;
+		var games = 0;
 		var total = 0;
-		for (var i = 0; i < games; i++) {
-			total += parseInt(scoresArray[i]);
+		for (var i = 0; i < scoresArray.length; i++) {
+			total += parseIntt(scoresArray[i]);
+			if (!isNaN(parseIntt(scoresArray[i]))) { //ONLY COUNT ITEMS THAT ARE NUMBERS FOR GAMES
+				games += 1;
+			}
 		}
 		var average = total/games;
-		average = Math.round((average + Number.EPSILON) * 100) / 100
+		average = Math.round((average + Number.EPSILON) * 100) / 100;
 		var plusminus = total - games*200;
 
-		document.getElementById("total"+roundNum).innerHTML = total;
-		document.getElementById("games"+roundNum).innerHTML = games;
-		document.getElementById("avg"+roundNum).innerHTML = average;
-		document.getElementById("plusminus"+roundNum).innerHTML = plusminus;
+		innerHTMLchange("total"+roundNum, total);
+		innerHTMLchange("games"+roundNum, games);
+		innerHTMLchange("avg"+roundNum, average);
+		innerHTMLchange("plusminus"+roundNum, plusminus);
     }
     
+	//CHECK IF ALL INPUTS BLANK
 	var allInputsBlank = true;
 	for (var i = 1; i < rounds+1; i++) {
 		if (document.getElementById("scores"+i).value !== "") {
@@ -157,11 +175,11 @@ function calc(roundNum) {
 	}
     
     if (allInputsBlank) {
-		document.getElementById("bigTotal").innerHTML = "na";
-		document.getElementById("bigGames").innerHTML = "na";
-		document.getElementById("bigAvg").innerHTML = "na";
-		document.getElementById("bigPlusMinus").innerHTML = "na";
-	} else {
+		innerHTMLchange("bigTotal", NAvalue);
+		innerHTMLchange("bigGames", NAvalue);
+		innerHTMLchange("bigAvg", NAvalue);
+		innerHTMLchange("bigPlusMinus", NAvalue);
+	} else { //CALC STATS
 		var bigTotal = 0;
 		var bigGames = 0;
 		for (var i = 1; i < rounds+1; i++) {
@@ -169,7 +187,7 @@ function calc(roundNum) {
 			bigGames += parseIntt(document.getElementById("games"+i).innerHTML);
 		}
 		var bigAverage = bigTotal/bigGames;
-		bigAverage = Math.round((bigAverage + Number.EPSILON) * 100) / 100
+		bigAverage = Math.round((bigAverage + Number.EPSILON) * 100) / 100;
 		var bigPlusMinus = bigTotal - bigGames*200;
 		
 		document.getElementById("bigTotal").innerHTML = bigTotal;
