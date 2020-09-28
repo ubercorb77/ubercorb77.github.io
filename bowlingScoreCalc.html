@@ -107,7 +107,7 @@ if (typeof(Storage) !== "undefined") {
 
 //PARSEINT ELIMINATE THE NaN RETURNS
 function parseIntt(x) {
-	if (!isNaN(x)) {
+	if (!isNaN(parseInt(x))) {
     	return parseInt(x);
     } else {
     	return 0;
@@ -116,11 +116,7 @@ function parseIntt(x) {
 
 //INNERHTML ELIMINATE NaN AND REPLACE WITH na
 function innerHTMLchange(id, text) {
-	if (isNaN(text)) {
-		document.getElementById(id).innerHTML = NAvalue;
-	} else {
-		document.getElementById(id).innerHTML = text;
-	}
+	document.getElementById(id).innerHTML = text;
 }
 
 //CLEAR ALL TEXTBOXES
@@ -151,7 +147,7 @@ function calc(roundNum) {
 		var total = 0;
 		for (var i = 0; i < scoresArray.length; i++) {
 			total += parseIntt(scoresArray[i]);
-			if (!isNaN(parseIntt(scoresArray[i]))) { //ONLY COUNT ITEMS THAT ARE NUMBERS FOR GAMES
+			if (!isNaN(parseInt(scoresArray[i]))) { //ONLY COUNT ITEMS THAT ARE NUMBERS FOR GAMES
 				games += 1;
 			}
 		}
