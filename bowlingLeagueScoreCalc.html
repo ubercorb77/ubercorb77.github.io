@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<style>
+h1 {
+	font-weight: bold;
+	font-family: Consolas;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+h2 {
+	font-weight: bold;
+	font-family: Consolas;
+	margin-top: 0;
+	padding-top: 0;
+}
+table, th, td {
+	border: 1px solid;
+	border-collapse: collapse;
+}
+th {
+	font-weight: bold;
+	font-size: large;
+}
+th, td {
+	text-align: center;
+	padding: 5px;
+	font-family: Consolas
+}
+.names {
+	width: 150px;
+}
+.hdcps {
+	width: 30px;
+}
+.games {
+	width: 110px;
+}
+p {
+	font-family: Consolas;
+}
+</style>
+
+<!-- ADD CACHE and CLEAR BUTTON and TEXT -->
+<h1>Bowling Score Calc</h1>
+<h2>for scratch or hdcp. leagues</h2>
+
+<p>Input scores with commas inbetween. "200,210,205"</p>
+<p id="cacheStatus">Cache Status</p>
+<button onclick="clearr();">Clear</button>
+
+<table>
+  <tr>
+    <th>Players</th>
+    <th>Hdcp.</th>
+    <th>Games</th>
+    <th>Total</th>
+    <th width="40px"></th>
+    <th>Players</th>
+    <th>Hdcp.</th>
+    <th>Games</th>
+    <th>Total</th>
+  </tr>
+  <tr>
+    <td><input class="names" id="team1name1" oninput="calc(&quot;team1name1&quot;)"></td>
+    <td><input class="hdcps" id="team1hdcp1" oninput="calc(&quot;team1hdcp1&quot;)"></td>
+    <td><input class="games" id="team1games1" oninput="calc(&quot;team1games1&quot;)"></td>
+    <td id="team1total1">na</td>
+    <td></td>
+    <td><input class="names" id="team2name1" oninput="calc(&quot;team2name1&quot;)"></td>
+    <td><input class="hdcps" id="team2hdcp1" oninput="calc(&quot;team2hdcp1&quot;)"></td>
+    <td><input class="games" id="team2games1" oninput="calc(&quot;team2games1&quot;)"></td>
+    <td id="team2total1">na</td>
+  </tr>
+  <tr>
+    <td><input class="names" id="team1name2" oninput="calc(&quot;team1name2&quot;)"></td>
+    <td><input class="hdcps" id="team1hdcp2" oninput="calc(&quot;team1hdcp2&quot;)"></td>
+    <td><input class="games" id="team1games2" oninput="calc(&quot;team1games2&quot;)"></td>
+    <td id="team1total2">na</td>
+    <td></td>
+    <td><input class="names" id="team2name2" oninput="calc(&quot;team2name2&quot;)"></td>
+    <td><input class="hdcps" id="team2hdcp2" oninput="calc(&quot;team2hdcp2&quot;)"></td>
+    <td><input class="games" id="team2games2" oninput="calc(&quot;team2games2&quot;)"></td>
+    <td id="team2total2">na</td>
+  </tr>
+  <tr>
+    <td><input class="names" id="team1name3" oninput="calc(&quot;team1name3&quot;)"></td>
+    <td><input class="hdcps" id="team1hdcp3" oninput="calc(&quot;team1hdcp3&quot;)"></td>
+    <td><input class="games" id="team1games3" oninput="calc(&quot;team1games3&quot;)"></td>
+    <td id="team1total3">na</td>
+    <td></td>
+    <td><input class="names" id="team2name3" oninput="calc(&quot;team2name3&quot;)"></td>
+    <td><input class="hdcps" id="team2hdcp3" oninput="calc(&quot;team2hdcp3&quot;)"></td>
+    <td><input class="games" id="team2games3" oninput="calc(&quot;team2games3&quot;)"></td>
+    <td id="team2total3">na</td>
+  </tr>
+  <tr>
+    <td><input class="names" id="team1name4" oninput="calc(&quot;team1name4&quot;)"></td>
+    <td><input class="hdcps" id="team1hdcp4" oninput="calc(&quot;team1hdcp4&quot;)"></td>
+    <td><input class="games" id="team1games4" oninput="calc(&quot;team1games4&quot;)"></td>
+    <td id="team1total4">na</td>
+    <td></td>
+    <td><input class="names" id="team2name4" oninput="calc(&quot;team2name4&quot;)"></td>
+    <td><input class="hdcps" id="team2hdcp4" oninput="calc(&quot;team2hdcp4&quot;)"></td>
+    <td><input class="games" id="team2games4" oninput="calc(&quot;team2games4&quot;)"></td>
+    <td id="team2total4">na</td>
+  </tr>
+  <tr>
+    <td><input class="names" id="team1name5" oninput="calc(&quot;team1name5&quot;)"></td>
+    <td><input class="hdcps" id="team1hdcp5" oninput="calc(&quot;team1hdcp5&quot;)"></td>
+    <td><input class="games" id="team1games5" oninput="calc(&quot;team1games5&quot;)"></td>
+    <td id="team1total5">na</td>
+    <td></td>
+    <td><input class="names" id="team2name5" oninput="calc(&quot;team2name5&quot;)"></td>
+    <td><input class="hdcps" id="team2hdcp5" oninput="calc(&quot;team2hdcp5&quot;)"></td>
+    <td><input class="games" id="team2games5" oninput="calc(&quot;team2games5&quot;)"></td>
+    <td id="team2total5">na</td>
+  </tr>
+  <tr>
+    <td>game subtotals</td>
+    <td></td>
+    <td id="team1subtotalpergame">na</td>
+    <td id="team1subtotalallgames">na</td>
+    <td></td>
+    <td>game subtotals</td>
+    <td></td>
+    <td id="team2subtotalpergame">na</td>
+    <td id="team2subtotalallgames">na</td>
+  </tr>
+  <tr>
+    <td>hdcp totals</td>
+    <td id="team1hdcpsubtotal">na</td>
+    <td id="team1hdcpsubtotalrepeat">na</td>
+    <td id="team1hdcptotal">na</td>
+    <td></td>
+    <td>hdcp totals</td>
+    <td id="team2hdcpsubtotal">na</td>
+    <td id="team2hdcpsubtotalrepeat">na</td>
+    <td id="team2hdcptotal">na</td>
+  </tr>
+  <tr>
+    <td>final totals</td>
+    <td></td>
+    <td id="team1totalpergame">na</td>
+    <td id="team1totalallgames">na</td>
+    <td></td>
+    <td>final totals</td>
+    <td></td>
+    <td id="team2totalpergame">na</td>
+    <td id="team2totalallgames">na</td>
+  </tr>
+  <tr>
+    <td>wins</td>
+    <td></td>
+    <td id="team1wingames"></td>
+    <td id="team1wintotal"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td id="team2wingames"></td>
+    <td id="team2wintotal"></td>
+  </tr>
+</table>
+
+<script>
+//CLEAR ALL TEXTBOXES
+function clearr() {
+	blahArray = ["name","hdcp","games"]
+	for (var teamNum = 1; teamNum < 3; teamNum++) {
+		for (var playerNum = 1; playerNum < 6; playerNum++) {
+			for (var i = 0; i < blahArray.length; i++) {
+				var x = "team"+teamNum+blahArray[i]+playerNum;
+				document.getElementById(x).value = "";
+			}
+		}
+	}
+	calc("team1name1");
+}
+
+//LOAD CACHE
+if (typeof(Storage) !== "undefined") {
+	blahArray = ["name","hdcp","games"]
+	for (var teamNum = 1; teamNum < 3; teamNum++) {
+		for (var playerNum = 1; playerNum < 6; playerNum++) {
+			for (var i = 0; i < blahArray.length; i++) {
+				var x = "team"+teamNum+blahArray[i]+playerNum;
+				document.getElementById(x).value = localStorage.getItem(x);
+			}
+		}
+	}
+	calc("team1name1");
+	document.getElementById("cacheStatus").innerHTML = "Cached scores loaded.";
+}
+
+//PARSEINT ELIMINATE THE NaN RETURNS
+function parseIntt(x) {
+	if (!isNaN(parseInt(x))) {
+    	return parseInt(x);
+    } else {
+    	return 0;
+    }
+}
+
+function innerHTMLchange(id, text) {
+	document.getElementById(id).innerHTML = text;
+}
+
+function calc(inputID) {
+	//bruh im just gonna calculate everything every time
+	//bruh this is not the most efficient code...
+	
+	//STORE CACHE
+	if (typeof(Storage) !== "undefined") {
+		for (var teamNum = 1; teamNum < 3; teamNum++) {
+			for (var playerNum = 1; playerNum < 6; playerNum++) {
+				for (var i = 0; i < blahArray.length; i++) {
+					localStorage.setItem(inputID, document.getElementById(inputID).value);
+				}
+			}
+		}
+	}
+	
+	//PLAYER SERIES TOTAL team1
+	var maxNumGames = 0;
+	for (var x = 1; x < 3; x++) {
+		for (var i = 1; i < 6; i++) {
+			var playerNumGames = 0;
+			var playerTotal = 0;
+			var playerScores = document.getElementById("team"+x+"games"+i).value.split(",");
+			for (var j = 0; j < playerScores.length; j++) {
+				playerTotal += parseIntt(playerScores[j]);
+				if (!isNaN(parseInt(playerScores[j]))) { //ONLY COUNT ITEMS THAT ARE NUMBERS FOR GAMES
+					playerNumGames += 1;
+				}
+			}
+			
+			//total text for player
+			innerHTMLchange("team"+x+"total"+i,playerTotal);
+			
+			//maxGames
+			if (playerNumGames > maxNumGames) {
+				maxNumGames = playerNumGames;
+			}
+		}
+	}
+
+	//HDCP SUBTOTAL
+	var hdcpsubtotals = [0, 0];
+	for (var i = 1; i < 6; i++) {
+		hdcpsubtotals[0] += parseIntt(document.getElementById("team1hdcp"+i).value);
+		hdcpsubtotals[1] += parseIntt(document.getElementById("team2hdcp"+i).value);
+	}
+	innerHTMLchange("team1hdcpsubtotal",hdcpsubtotals[0]);
+	innerHTMLchange("team2hdcpsubtotal",hdcpsubtotals[1]);
+	
+	for (var x = 1; x<3; x++) {
+		//HDCP SUBTOTAL REPEAT
+		var hdcpsubtotalpergame = [];
+		for (var j = 0; j < maxNumGames; j++) {
+			hdcpsubtotalpergame.push(hdcpsubtotals[x-1]);
+		}
+		innerHTMLchange("team"+x+"hdcpsubtotalrepeat", hdcpsubtotalpergame.join());
+		
+		//HDCP ALL GAMES
+		innerHTMLchange("team"+x+"hdcptotal", maxNumGames*hdcpsubtotals[x-1]);
+		
+		//GAME SUBTOTALS PER GAME
+		var subtotalsPerGame = [];
+		for (var i = 1; i < 6; i++) {
+			var playerScores = document.getElementById("team"+x+"games"+i).value.split(",");
+			for (var j = 0; j<maxNumGames; j++) {
+				if (subtotalsPerGame.length > j) {
+					subtotalsPerGame[j] += parseIntt(playerScores[j]);
+				} else {
+					subtotalsPerGame[j] = parseIntt(playerScores[j]);
+				}
+			}
+		}
+		innerHTMLchange("team"+x+"subtotalpergame", subtotalsPerGame.join());
+		
+		//GAME SUBTOTAL ALL GAMES
+		var gamesubtotalallgames = subtotalsPerGame.reduce(function(a, b) {return a + b;}, 0);
+		innerHTMLchange("team"+x+"subtotalallgames",gamesubtotalallgames);
+		
+		//FINAL TOTALS PER GAME
+		var finaltotalspergame = [];
+		for (var i = 0; i < maxNumGames; i++) {
+			//add handicap
+			if (finaltotalspergame.length > i) {
+				finaltotalspergame[i] += parseIntt(hdcpsubtotalpergame[i]);
+			} else {
+				finaltotalspergame[i] = parseIntt(hdcpsubtotalpergame[i]);
+			}
+			//add games
+			if (finaltotalspergame.length > i) {
+				finaltotalspergame[i] += parseIntt(subtotalsPerGame[i]);
+			} else {
+				finaltotalspergame[i] = parseIntt(subtotalsPerGame[i]);
+			}
+		}
+		
+		innerHTMLchange("team"+x+"totalpergame",finaltotalspergame);
+		
+		//FINAL TOTALS ALL GAMES
+		var finaltotalallgames = finaltotalspergame.reduce(function(a, b) {return a + b;}, 0);
+		innerHTMLchange("team"+x+"totalallgames",finaltotalallgames);
+	}
+	
+	//DID YOU WIN
+	var winText = " W ";
+	var lossText = " L ";
+	var tieText = "tie"
+	
+	var winPerGame = [[],[]];
+	var winFinals = [lossText, lossText];
+	
+	var finaltotalspergame1 = document.getElementById("team1totalpergame").innerHTML.split(",");
+	var finaltotalspergame2 = document.getElementById("team2totalpergame").innerHTML.split(",");
+	var finaltotalallgames1 = parseIntt(document.getElementById("team1totalallgames").innerHTML);
+	var finaltotalallgames2 = parseIntt(document.getElementById("team2totalallgames").innerHTML);
+	
+	for (var j = 0; j < maxNumGames; j++) {
+		winPerGame[0].push(lossText);
+		winPerGame[1].push(lossText);
+	}
+	
+	for (var i = 1; i<3; i++) {
+		for (var j = 0; j < maxNumGames; j++) {
+			if (finaltotalspergame1[j] > finaltotalspergame2[j]) {
+				winPerGame[0][j] = winText;
+			} else if (finaltotalspergame1[j] < finaltotalspergame2[j]) {
+				winPerGame[1][j] = winText;
+			} else {
+				winPerGame[0][j] = tieText;
+				winPerGame[1][j] = tieText;
+			}
+		}
+		
+		if (finaltotalallgames1 > finaltotalallgames2) {
+			winFinals[0] = winText;
+		} else if (finaltotalallgames1 < finaltotalallgames2){
+			winFinals[1] = winText;
+		} else {
+			winFinals[0] = tieText;
+			winFinals[1] = tieText;
+		}
+		
+		innerHTMLchange("team"+i+"wingames", winPerGame[i-1]);
+		innerHTMLchange("team"+i+"wintotal", winFinals[i-1]);
+	}
+}
+</script>
+
+</body>
+</html>
