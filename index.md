@@ -9,7 +9,8 @@ I'll be updating this. If an item is listed here but there's no link, that proba
   - I upload fun and serious bowling videos here. Usually the serious videos are me explaining my opinions using some analysis.
 
 ## Javascript
-- [Bowling Scores Calc](bowlingScoreCalc.html) (calculate total, games, avg, +/- 200)
+- [Bowling Scores Calc for scratch tournaments](bowlingScoreCalc.html) (calculate total, games, avg, +/- 200)
+- [Bowling Scores Calc for scratch or hdcp. leagues](bowlingScoreCalc.html) (calculate everything on a league sheet)
 
 ## Google Sheets
 ### Calculators
