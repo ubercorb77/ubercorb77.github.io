@@ -10,7 +10,7 @@ I'll be updating this. If an item is listed here but there's no link, that proba
 
 ## Javascript
 - [Bowling Scores Calc for scratch tournaments](bowlingScoreCalc.html) (calculate total, games, avg, +/- 200)
-- [Bowling Scores Calc for scratch or hdcp. leagues](bowlingScoreCalc.html) (calculate everything on a league sheet)
+- [Bowling Scores Calc for scratch or hdcp. leagues](bowlingLeagueScoreCalc.html) (calculate everything on a league sheet)
 
 ## Google Sheets
 ### Calculators
