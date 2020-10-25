@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<style>
+h1 {
+	font-weight: bold;
+	font-family: Consolas;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+h2 {
+	font-weight: bold;
+	font-family: Consolas;
+	margin-top: 0;
+	padding-top: 0;
+}
+th {
+	font-weight: bold;
+	font-size: large;
+}
+th,td {
+	text-align: center;
+	padding: 5px;
+	font-family: Consolas;
+}
+p {
+	font-family: Consolas;
+}
+.inputs {
+	width: 100px;
+}
+</style>
+
+<h1>Bowling Layout Conversion</h1>
+<h2>for Dual Angle and Pin Buffer</h2>
+
+<p>Make sure to input numbers properly!</p>
+<p>Results are rounded to 2 decimal places.</p>
+<br><br>
+
+<table>
+  <tr>
+	<td>Ball Radius</td>
+  </tr>
+  <tr>
+	<td><input id="radius" class="inputs" autocomplete="off" value="4.27375" oninput="StormtoDA(); DAtoStorm();"></td>
+  </tr>
+</table>
+<br>
+<p>Pin Buffer</p>
+<table>
+  <tr>
+	<td>Pin to PAP</td>
+	<td>PSA to PAP</td>
+	<td>Pin to VAL</td>
+  </tr>
+  <tr>
+	<td><input id="stormpintopap" class="inputs" autocomplete="off" oninput="StormtoDA()"></td>
+	<td><input id="stormpsatopap" class="inputs" autocomplete="off" oninput="StormtoDA()"></td>
+	<td><input id="stormpintoval" class="inputs" autocomplete="off" oninput="StormtoDA()"></td>
+  </tr>
+</table>
+<br>
+<p>Dual Angle</p>
+<table>
+  <tr>
+	<td>PSA angle</td>
+	<td>Pin to PAP</td>
+	<td>VAL angle</td>
+  </tr>
+  <tr>
+	<td><input id="DAangle1" class="inputs" autocomplete="off" oninput="DAtoStorm()"></td>
+	<td><input id="DApintopap" class="inputs" autocomplete="off" oninput="DAtoStorm()"></td>
+	<td><input id="DAangle2" class="inputs" autocomplete="off" oninput="DAtoStorm()"></td>
+  </tr>
+</table>
+
+<script>
+pi = Math.PI;
+
+function round(x) {
+	return Math.round((x + Number.EPSILON) * 100) / 100;
+}
+
+function valueChange(id, text) {
+	document.getElementById(id).value = text;
+}
+
+function StormtoDA() {
+	stormpintopap = parseInt(document.getElementById("stormpintopap").value);
+	stormpsatopap = parseInt(document.getElementById("stormpsatopap").value);
+	stormpintoval = parseInt(document.getElementById("stormpintoval").value);
+	radius = parseInt(document.getElementById("radius").value);
+	
+	x = Math.acos( ((Math.cos(stormpsatopap/radius)-Math.cos(stormpintopap/radius)*Math.cos(pi/2))) / (Math.sin(stormpintopap/radius)*Math.sin(pi/2)) ) * 180/pi;
+	valueChange("DAangle1", round(x));
+	x = stormpintopap;
+	valueChange("DApintopap", round(x));
+	x = Math.asin( Math.sin(stormpintoval/radius)*Math.sin(pi/2) / Math.sin(stormpintopap/radius) ) * 180/pi;
+	valueChange("DAangle2", round(x));
+}
+
+function DAtoStorm() {
+	DAangle1 = parseInt(document.getElementById("DAangle1").value);
+	DApintopap = parseInt(document.getElementById("DApintopap").value);
+	DAangle2 = parseInt(document.getElementById("DAangle2").value);
+	radius = parseInt(document.getElementById("radius").value);
+	
+	x = DApintopap;
+	valueChange("stormpintopap", round(x));
+	x = radius*Math.acos( Math.cos(pi/2)*Math.cos(DApintopap/radius) + Math.sin(pi/2)*Math.sin(DApintopap/radius)*Math.cos(DAangle1*pi/180) );
+	valueChange("stormpsatopap", round(x));
+	x = radius*Math.asin( Math.sin(DAangle2*pi/180)*Math.sin(DApintopap/radius) / Math.sin(pi/2) );
+	valueChange("stormpintoval", round(x));
+}
+</script>
+
+</body>
+</html>
