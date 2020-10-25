@@ -38,6 +38,7 @@ p {
 
 <p>Make sure to input numbers properly!</p>
 <p>Results are rounded to 2 decimal places.</p>
+<p>Ball Radius = (8.5 + 8.595) / 2 = 4.27375 (so 1/4 of the circumference is actually 6.713 inches)</p>
 <br><br>
 
 <table>
@@ -89,12 +90,12 @@ function valueChange(id, text) {
 }
 
 function StormtoDA() {
-	stormpintopap = parseInt(document.getElementById("stormpintopap").value);
-	stormpsatopap = parseInt(document.getElementById("stormpsatopap").value);
-	stormpintoval = parseInt(document.getElementById("stormpintoval").value);
-	radius = parseInt(document.getElementById("radius").value);
+	stormpintopap = parseFloat(document.getElementById("stormpintopap").value);
+	stormpsatopap = parseFloat(document.getElementById("stormpsatopap").value);
+	stormpintoval = parseFloat(document.getElementById("stormpintoval").value);
+	radius = parseFloat(document.getElementById("radius").value);
 	
-	x = Math.acos( ((Math.cos(stormpsatopap/radius)-Math.cos(stormpintopap/radius)*Math.cos(pi/2))) / (Math.sin(stormpintopap/radius)*Math.sin(pi/2)) ) * 180/pi;
+	x = Math.acos( (Math.cos(stormpsatopap/radius)-Math.cos(stormpintopap/radius)*Math.cos(pi/2)) / (Math.sin(stormpintopap/radius)*Math.sin(pi/2)) ) * 180/pi;
 	valueChange("DAangle1", round(x));
 	x = stormpintopap;
 	valueChange("DApintopap", round(x));
@@ -103,10 +104,10 @@ function StormtoDA() {
 }
 
 function DAtoStorm() {
-	DAangle1 = parseInt(document.getElementById("DAangle1").value);
-	DApintopap = parseInt(document.getElementById("DApintopap").value);
-	DAangle2 = parseInt(document.getElementById("DAangle2").value);
-	radius = parseInt(document.getElementById("radius").value);
+	DAangle1 = parseFloat(document.getElementById("DAangle1").value);
+	DApintopap = parseFloat(document.getElementById("DApintopap").value);
+	DAangle2 = parseFloat(document.getElementById("DAangle2").value);
+	radius = parseFloat(document.getElementById("radius").value);
 	
 	x = DApintopap;
 	valueChange("stormpintopap", round(x));
