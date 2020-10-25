@@ -11,6 +11,7 @@ I'll be updating this. If an item is listed here but there's no link, that proba
 ## Javascript
 - [Bowling Scores Calc for scratch tournaments](bowlingScoreCalc.html) (calculate total, games, avg, +/- 200)
 - [Bowling Scores Calc for scratch or hdcp. leagues](bowlingLeagueScoreCalc.html) (calculate everything on a league sheet)
+- [Bowling Layout Converter for Dual Angle and Pin Buffer](bowlingLayoutConverter.html)
 
 ## Google Sheets
 ### Calculators
