@@ -21,12 +21,13 @@ th {
 	font-size: large;
 }
 th,td {
-	text-align: center;
+	text-align: left;
 	padding: 5px;
 	font-family: Consolas;
 }
 p {
 	font-family: Consolas;
+	margin-bottom: 0px;
 }
 .inputs {
 	width: 100px;
@@ -41,12 +42,15 @@ p {
 <p>Ball Radius = (8.5 + 8.595) / 2 = 4.27375 (so 1/4 of the circumference is actually 6.713 inches)</p>
 <br><br>
 
+<p>Ball Info</p>
 <table>
   <tr>
 	<td>Ball Radius</td>
+	<td>1/4 of circumference</td>
   </tr>
   <tr>
 	<td><input readonly id="radius" class="inputs" autocomplete="off" value="4.27375" oninput="StormtoDA(); DAtoStorm();"></td>
+	<td><input readonly id="fourthofcirc" class="inputs" autocomplete="off" value="6.71319" oninput="StormtoDA(); DAtoStorm();"></td>
   </tr>
 </table>
 <br>
@@ -77,9 +81,20 @@ p {
 	<td><input id="DAangle2" class="inputs" autocomplete="off" oninput="DAtoStorm()"></td>
   </tr>
 </table>
+<br></br>
+<textarea readonly rows="2" cols="30" id="resultText" autocomplete="off" value="wow123">Result text will appear here.</textarea>
+<button onclick="copy(&quot;resultText&quot;);">Copy result text</button>
 
 <script>
 pi = Math.PI;
+
+function copy(id) {
+  var copyText = document.getElementById(id);
+  copyText.select();
+  copyText.setSelectionRange(0, 99999)
+  document.execCommand("copy");
+  alert("Copied "+ id);
+}
 
 function round(x) {
 	return Math.round((x + Number.EPSILON) * 100) / 100;
@@ -101,6 +116,8 @@ function StormtoDA() {
 	valueChange("DApintopap", round(x));
 	x = Math.asin( Math.sin(stormpintoval/radius)*Math.sin(pi/2) / Math.sin(stormpintopap/radius) ) * 180/pi;
 	valueChange("DAangle2", round(x));
+	
+	updateResultText();
 }
 
 function DAtoStorm() {
@@ -115,6 +132,27 @@ function DAtoStorm() {
 	valueChange("stormpsatopap", round(x));
 	x = radius*Math.asin( Math.sin(DAangle2*pi/180)*Math.sin(DApintopap/radius) / Math.sin(pi/2) );
 	valueChange("stormpintoval", round(x));
+	
+	updateResultText();
+}
+
+function updateResultText() {
+	x = ""
+	x += "Pin Buffer: ";
+	x += document.getElementById("stormpintopap").value;
+	x += " x "
+	x += document.getElementById("stormpsatopap").value;
+	x += " x "
+	x += document.getElementById("stormpintoval").value;
+	x += "\n";
+	x += "Dual Angle: ";
+	x += document.getElementById("DAangle1").value;
+	x += " x "
+	x += document.getElementById("DApintopap").value;
+	x += " x "
+	x += document.getElementById("DAangle2").value;
+	
+	valueChange("resultText", x);
 }
 </script>
 
