@@ -102,6 +102,8 @@
 
     function dothestuff () {
 
+      document.getElementById("allDisplayedMsgs").innerHTML = "";
+
       inputStartDateTime = new Date(document.getElementById("inputStartDate").value + " " + document.getElementById("inputStartTime").value);
       inputEndDateTime = new Date(document.getElementById("inputEndDate").value + " " + document.getElementById("inputEndTime").value);
 
@@ -132,16 +134,16 @@
 
       // python: loop through multiple files
 
-      const person1 = jsonData['participants'][1]['name'];
-      const person2 = jsonData['participants'][0]['name'];
+      const person1 = decodeURIComponent(escape(jsonData['participants'][1]['name']));
+      const person2 = decodeURIComponent(escape(jsonData['participants'][0]['name']));
 
       for (const statName of statsNames) {
         stats[person1+' '+statName] = 0;
         stats[person2+' '+statName] = 0;
       }
 
-      var msgs = jsonData['messages'];
-      msgs.reverse();
+      var msgsOG = jsonData['messages'];
+      var msgs = msgsOG.slice().reverse();
 
       // this kinda needs to be changed
       startunixtime_ms = msgs[0]['timestamp_ms'];
@@ -166,7 +168,7 @@
 
         // message DATA
         var msgType = msgData['type'];
-        var msgPerson = msgData['sender_name'];
+        var msgPerson = decodeURIComponent(escape(msgData['sender_name']));
 
         // messages per person
         if (msgData['type'] != 'Call') { stats[msgPerson+' msgs'] += 1; }
@@ -209,7 +211,7 @@
         if ("content" in msgData) {
 
           //content DATA
-          const content = msgData['content']; //encoding?????
+          const content = decodeURIComponent(escape(msgData['content'])); //encoding?????
           const splitcontent = content.split(" ");
           const contentWordsNum = splitcontent.length;
 
