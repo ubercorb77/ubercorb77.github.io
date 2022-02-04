@@ -27,7 +27,6 @@
       font-size: 13px;
     }
 
-
 	</style>
 </head>
 
@@ -35,10 +34,12 @@
 
   <form id="upload">
   	<label for="file">File to upload</label>
+    <br>
   	<input type="file" id="file" accept=".json">
+    <br>
   	<button>Upload</button>
   </form>
-  <p id="localStorageStatus"></p>
+  <p id="loadedStatus"></p>
   <p>start</p>
   <input type="date" id="inputStartDate" oninput="datetimeinputsUpdate();">
   <input type="time" id="inputStartTime" oninput="datetimeinputsUpdate();">
@@ -47,7 +48,7 @@
   <input type="time" id="inputEndTime" oninput="datetimeinputsUpdate();">
   <br><br>
   <button onclick="dothestuff()">do the stuff!</button>
-  <div id="allDisplayedMsgs"></div>
+  <div id="allDisplayedMsgs" width=50%></div>
 
   <script>
 
@@ -96,9 +97,9 @@
     var jsonDataFileName = localStorage.getItem("jsonDataWowFileName");
     if (jsonData) {
       jsonData = JSON.parse(jsonData);
-      document.getElementById("localStorageStatus").innerHTML = "FROM PREVIOUS SESSION: loaded " + jsonDataFileName;
+      document.getElementById("loadedStatus").innerHTML = "FROM PREVIOUS SESSION: loaded file " + jsonDataFileName;
     } else {
-      document.getElementById("localStorageStatus").innerHTML = "FROM PREVIOUS SESSION: loaded nothing... go upload something"
+      document.getElementById("loadedStatus").innerHTML = "FROM PREVIOUS SESSION: loaded nothing... go upload something"
     }
 
     // Log the uploaded file to the console
@@ -110,6 +111,7 @@
       //jsonData = JSON.parse(decodeURIComponent(escape(str)));
       //jsonData = JSON.parse(decodeURIComponent(escape(JSON.stringify(jsonData))));
     	console.log('json', jsonData);
+      document.getElementById("loadedStatus").innerHTML = "FROM CURRENT SESSION: loaded file " + fileName;
       localStorage.setItem("jsonDataWow", JSON.stringify(jsonData));
       localStorage.setItem("jsonDataWowFileName", fileName);
     }
@@ -140,6 +142,8 @@
 
       inputStartDateTime = new Date(document.getElementById("inputStartDate").value + " " + document.getElementById("inputStartTime").value);
       inputEndDateTime = new Date(document.getElementById("inputEndDate").value + " " + document.getElementById("inputEndTime").value);
+      // console.log(inputStartDateTime);
+      // console.log(inputEndDateTime);
 
       // python: multiple files input
 
