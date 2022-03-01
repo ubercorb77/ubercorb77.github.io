@@ -139,6 +139,16 @@
       return dateObject.toLocaleString();
     }
 
+    var daysDict;
+    var hoursDict;
+    var wordsDict;
+    var photoCount;
+    var photosRefDict;
+    var videoCount;
+    var videosRefDict;
+    var audioCount;
+    var audiosRefDict;
+
     function dothestuff () {
 
       document.getElementById("allDisplayedMsgs").innerHTML = "";
@@ -156,15 +166,15 @@
       var stats = {};
       const statsNames = ['chars', 'msgs', 'words'];
 
-      var daysDict = {};
-      var hoursDict = {};
-      var wordsDict = {};
-      var photoCount = 0;
-      var photosRefDict = {};
-      var videoCount = 0;
-      var videosRefDict = {};
-      var audioCount = 0;
-      var audiosRefDict = {};
+      daysDict = {};
+      hoursDict = {};
+      wordsDict = {};
+      photoCount = 0;
+      photosRefDict = {};
+      videoCount = 0;
+      videosRefDict = {};
+      audioCount = 0;
+      audiosRefDict = {};
 
       var countStupidBlankMsgs = 0;
       var countMsgsNotWrittenToFile = 0;
@@ -278,19 +288,31 @@
         } else {
           // these never have an accompanying content
           if ("photos" in msgData) {
-            photoCount += 1;
-            addToStringWrite("Photo #" + photoCount.toString());
-            addToStringWrite("File: " + msgData['photos'][0]['uri']);
+            try {
+              photoCount += 1;
+              addToStringWrite("Photo #" + photoCount.toString());
+              addToStringWrite("File: " + msgData['photos'][0]['uri']);
+            } catch(errorWow) {
+              console.error(errorWow);
+            }
           }
           else if ("videos" in msgData) {
-            videoCount += 1;
-            addToStringWrite("Video #" + videoCount.toString());
-            addToStringWrite("File: " + msgData['videos'][0]['uri']);
+            try {
+              videoCount += 1;
+              addToStringWrite("Video #" + videoCount.toString());
+              addToStringWrite("File: " + msgData['videos'][0]['uri']);
+            } catch(errorWow) {
+              console.error(errorWow);
+            }
           }
           else if ("audio_files" in msgData) {
-            audioCount += 1;
-            addToStringWrite("Audio #" + audioCount.toString());
-            addToStringWrite("File: " + msgData['audio_files'][0]['uri']);
+            try {
+              audioCount += 1;
+              addToStringWrite("Audio #" + audioCount.toString());
+              addToStringWrite("File: " + msgData['audio_files'][0]['uri']);
+            } catch(errorWow) {
+              console.error(errorWow);
+            }
           }
         }
 
